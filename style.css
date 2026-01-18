@@ -1,4 +1,4 @@
-*{
+*,*::before,*::after{
     margin:0;
     padding: 0;
     box-sizing: border-box;
@@ -7,7 +7,7 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(232, 232, 232);
-    font-size: clamp(1,8rem, calc(7vw + 1rem), 5rem);;
+    font-size: 0.95rem;
 }
 
 header{
@@ -25,12 +25,41 @@ nav{
 }
 
 nav a{
+    position: relative;
     text-decoration: none;
     color: black;
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s;
 }
 
-nav a:hover{
-    text-decoration:;
+nav a::before,
+nav a::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 0;               
+  background-color: black;
+  transition: width 0.3s ease;
+}
+
+nav a::before {
+  top: -5px;
+  right: 0;
+}
+
+nav a::after {
+  bottom: -5px;
+  left: 0;
+}
+
+nav a:hover::before,
+nav a:hover::after {
+  width: 100%;            
+}
+
+nav a:hover {
+  color: rgb(129, 129, 129); 
 }
 
 main{
@@ -62,7 +91,7 @@ main{
     border: 2px solid black;
 }
 
-.personal-details{
+.details{
     display: inline-block;    
 }
 
@@ -80,3 +109,43 @@ main{
     font-size: 0.95rem;
     line-height: 1.5;
 }
+
+hr{
+    height: 4px;
+    background-color: black;
+    margin: 10px 0;
+}
+
+li{
+    margin: 10px 15px;
+}
+
+.favorite-item{
+
+    margin-top: 15px;
+}
+.fav-content{
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.pic img{
+
+    display: block;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    max-width:180px;
+    height:150px;
+    border: 2px solid black;
+}
+
+footer{
+    background-color: black;
+    color: white;
+    padding: min(1.5em, 8%);
+    text-align: center;
+    
+}
+
